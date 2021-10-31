@@ -1,0 +1,55 @@
+site_name: "Sgarbossa Projects"
+site_description: 'Sgarbossa Projects - Home Automation, ESP32, MicroPython, Arduino, DevOps'
+site_author: 'Mike Sgarbossa'
+docs_dir: 'docs'
+use_directory_urls: false
+repo_name: 'GIT Repository for this site'
+repo_url: 'https://github.com/msgarbossa/documentation'
+edit_uri: 'blob/master/docs/'
+
+# Below "theme" section determines the overall looks and font used
+
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  logo: './images/Logo.png'
+  palette:
+    primary: 'darkblue'
+    accent: 'light green'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  favicon: './images/favicon.ico'
+
+extra_css:
+  - './_css/extra.css'
+
+# Below "markdown_extensions" section determines the markdown plugins used to affect how some content (eg: use of admonition) is displayed
+
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: true
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+      baselevel: 1
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
