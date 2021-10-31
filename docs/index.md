@@ -21,8 +21,8 @@ Use [WebREPL](./MicroPython/WebREPL.md) for remote serial connectivity
 
 ### Projects
 
-- room temp sensor - TBD
-- room temp sensor with CO2 - TBD
+- [room temp sensor](https://github.com/msgarbossa/micropython-room)
+- [room temp sensor with CO2](https://github.com/msgarbossa/micropython-room)
 - bucket mouse trap with motion sensor - TBD
 
 ## Arduino
@@ -38,17 +38,17 @@ Use [WebREPL](./MicroPython/WebREPL.md) for remote serial connectivity
 - [leak sensor](https://github.com/msgarbossa/esp32-leak-sensor)
 - [room temp sensor](https://github.com/msgarbossa/esp32-room-sensor)
 - [garage manager](https://github.com/msgarbossa/esp32-garage-manager)
-- [doorbell](https://github.com/msgarbossa/esp32-doorbell) - smart doorbell with do-not-disturb settings and MQTT notifications
+- [doorbell](https://github.com/msgarbossa/esp32-doorbell) - replacement for standard doorbell chime with do-not-disturb settings, MQTT notifications, and indoor motion sensor
 - [plant water](https://github.com/msgarbossa/esp32-plant-water)
 
-## Home Automation Tools
+## Home Automation Software
 
-- MQTT - TBD
-- NodeRed - TBD
-- Prometheus - TBD
-- Grafana - TBD
-- Home Assistant - TBD
-- FreeCAD - TBD
+- [Backend](./Home_Automation_Software/backend.md) - MQTT, NodeRed, and Prometheus (TBD)
+- [Dashboard](./Home_Automation_Software/dashboard.md) - Grafana (TBD)
+- [Alerts](./Home_Automation_Software/alerts.md) - Slack, NodeRed, Prometheus AlertManager (TBD)
+- [MQTT buttons](./Home_Automation_Software/mqtt_buttons.md) - NodeRed, Home Assistant (TBD)
+- [Zwave](./Home_Automation_Software/zwave.md) - NodeRed and ZWave-JS (TBD)
+- [Tasmota](./Home_Automation_Software/tasmota.md) - Tasmota and NodeRed (TBD)
 
 ## Ansible
 
