@@ -31,6 +31,7 @@ Use [WebREPL](./MicroPython/WebREPL.md) for remote serial connectivity
 
 - Flash firmware - TBD
 - PlatformIO - TBD
+- OTA updates - TBD
 
 ### Projects
 
@@ -47,6 +48,7 @@ Use [WebREPL](./MicroPython/WebREPL.md) for remote serial connectivity
 - Prometheus - TBD
 - Grafana - TBD
 - Home Assistant - TBD
+- FreeCAD - TBD
 
 ## Ansible
 
