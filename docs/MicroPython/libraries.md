@@ -24,6 +24,6 @@ https://raw.githubusercontent.com/targetblank/micropython_ahtx0/master/ahtx0.py
 
 # MH-Z19B library
 
-I can't find where I found this, but it's one of the simpler ones.  It just reads raw values instead of using the automatic calibtration.  I've had problems with the automatic calibration because it assumes the sensor is running continuously for long periods of time.
+I can't find where I found this, but it's one of the simpler ones.  It just reads raw values instead of using the automatic calibration.  I've had problems with the automatic calibration because it assumes the sensor is running continuously for long periods of time.
 
 https://github.com/msgarbossa/micropython-room-co2/blob/master/mhz19b.py
