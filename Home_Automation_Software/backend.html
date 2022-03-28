@@ -280,9 +280,55 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home Automation Backend
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="backend.html" class="md-nav__link md-nav__link--active">
         Home Automation Backend
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt" class="md-nav__link">
+    MQTT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-red" class="md-nav__link">
+    Node-RED
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    Prometheus
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -490,6 +536,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt" class="md-nav__link">
+    MQTT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-red" class="md-nav__link">
+    Node-RED
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    Prometheus
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -506,7 +581,47 @@
                 
                 
                 <h1 id="home-automation-backend">Home Automation Backend<a class="headerlink" href="#home-automation-backend" title="Permanent link">&para;</a></h1>
-<p>MQTT, NodeRed, and Prometheus</p>
+<h2 id="mqtt">MQTT<a class="headerlink" href="#mqtt" title="Permanent link">&para;</a></h2>
+<p>Mosquitto runs great as a container.  Below is a simple script I've used to run Mosquitto as a Docker container on a Raspberry Pi 3B+.  Mosquitto shouldn't need a lot of resources.  Persistent storage is required if running this in a Kubernetes cluster.</p>
+<div class="highlight"><pre><span></span><code>/export/mosquitto
+├── data
+│   ├── mosquitto.db
+│   └── passwords.txt
+├── docker-run.sh
+├── log
+│   └── mosquitto.log
+└── mosquitto.conf
+</code></pre></div>
+<p>mosquitto.conf:
+<div class="highlight"><pre><span></span><code>per_listener_settings true 
+persistence true
+persistence_location /mosquitto/data/
+log_dest file /mosquitto/log/mosquitto.log
+password_file /mosquitto/data/passwords.txt
+</code></pre></div></p>
+<p>docker-run.sh:
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+id mqtt &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;useradd mqtt&quot;</span>
+  useradd mqtt
+<span class="k">fi</span>
+<span class="nv">uid</span><span class="o">=</span><span class="sb">`</span>id -u mqtt<span class="sb">`</span>
+<span class="nv">gid</span><span class="o">=</span><span class="sb">`</span>id -g mqtt<span class="sb">`</span>
+
+<span class="nb">cd</span> /export/mosquitto
+chown -R mqtt:mqtt data
+chown -R mqtt:mqtt log
+
+docker run -d --restart always --name<span class="o">=</span><span class="s2">&quot;mosquitto&quot;</span> -u <span class="nv">$uid</span>:<span class="nv">$gid</span> -p <span class="m">1883</span>:1883 -p <span class="m">9001</span>:9001 -v /export/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf -v /export/mosquitto/data:/mosquitto/data -v /export/mosquitto/log:/mosquitto/log eclipse-mosquitto
+</code></pre></div></p>
+<h2 id="node-red">Node-RED<a class="headerlink" href="#node-red" title="Permanent link">&para;</a></h2>
+<p>The official site has a number of options for setting up Node-RED:
+<a href="https://nodered.org/docs/getting-started/">https://nodered.org/docs/getting-started/</a></p>
+<p>Once setup, drop in an <code>mqtt in</code> block and add the MQTT server connection parameters.</p>
+<h2 id="prometheus">Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
+<p>TBD</p>
                 
               
               
