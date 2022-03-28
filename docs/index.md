@@ -22,6 +22,7 @@ Use [WebREPL](./MicroPython/WebREPL.md) for remote serial connectivity
 ### Projects
 
 - [room temp sensor](https://github.com/msgarbossa/micropython-room)
+- [humidistat](https://github.com/msgarbossa/micropython-humidistat)
 - [room temp sensor with CO2](https://github.com/msgarbossa/micropython-room-co2)
 - bucket mouse trap with motion sensor - TBD
 
